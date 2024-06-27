@@ -1,0 +1,278 @@
+[
+  {
+    "exerciseName": "Barbell Bench Press",
+    "equipment": "barbell",
+    "muscleGroup": "chest"
+  },
+  {
+    "exerciseName": "Dumbbell Flyes",
+    "equipment": "dumbell",
+    "muscleGroup": "chest"
+  },
+  {
+    "exerciseName": "Lat Pulldown",
+    "equipment": "machine",
+    "muscleGroup": "lats"
+  },
+  {
+    "exerciseName": "Seated Row",
+    "equipment": "machine",
+    "muscleGroup": "back"
+  },
+  {
+    "exerciseName": "Dumbbell Bicep Curl",
+    "equipment": "dumbell",
+    "muscleGroup": "bicep"
+  },
+  {
+    "exerciseName": "Tricep Pushdown",
+    "equipment": "machine",
+    "muscleGroup": "tricep"
+  },
+  {
+    "exerciseName": "Leg Press",
+    "equipment": "machine",
+    "muscleGroup": "quadriceps"
+  },
+  {
+    "exerciseName": "Hamstring Curl",
+    "equipment": "machine",
+    "muscleGroup": "hamstrings"
+  },
+  {
+    "exerciseName": "Shoulder Press",
+    "equipment": "dumbell",
+    "muscleGroup": "shoulders"
+  },
+  {
+    "exerciseName": "Calf Raise",
+    "equipment": "machine",
+    "muscleGroup": "calves"
+  },
+  {
+    "exerciseName": "Plank",
+    "equipment": "none",
+    "muscleGroup": "abs"
+  },
+  {
+    "exerciseName": "Deadlift",
+    "equipment": "barbell",
+    "muscleGroup": "back"
+  },
+  {
+    "exerciseName": "Barbell Squat",
+    "equipment": "barbell",
+    "muscleGroup": "quadriceps"
+  },
+  {
+    "exerciseName": "Glute Bridge",
+    "equipment": "none",
+    "muscleGroup": "glutes"
+  },
+  {
+    "exerciseName": "Forearm Curl",
+    "equipment": "dumbell",
+    "muscleGroup": "forearms"
+  },
+  {
+    "exerciseName": "Shrugs",
+    "equipment": "dumbell",
+    "muscleGroup": "traps"
+  },
+  {
+    "exerciseName": "Russian Twist",
+    "equipment": "none",
+    "muscleGroup": "obliques"
+  },
+  {
+    "exerciseName": "Stretch Band Bicep Curl",
+    "equipment": "stretchBand",
+    "muscleGroup": "bicep"
+  },
+  {
+    "exerciseName": "Stretch Band Tricep Extension",
+    "equipment": "stretchBand",
+    "muscleGroup": "tricep"
+  },
+
+  {
+    "exerciseName": "Incline Bench Press",
+    "equipment": "barbell",
+    "muscleGroup": "chest"
+  },
+  {
+    "exerciseName": "Decline Bench Press",
+    "equipment": "barbell",
+    "muscleGroup": "chest"
+  },
+  {
+    "exerciseName": "Cable Crossover",
+    "equipment": "machine",
+    "muscleGroup": "chest"
+  },
+  {
+    "exerciseName": "Pull-Up",
+    "equipment": "none",
+    "muscleGroup": "back"
+  },
+  {
+    "exerciseName": "Dumbbell Row",
+    "equipment": "dumbell",
+    "muscleGroup": "back"
+  },
+  {
+    "exerciseName": "T-Bar Row",
+    "equipment": "barbell",
+    "muscleGroup": "back"
+  },
+  {
+    "exerciseName": "Preacher Curl",
+    "equipment": "barbell",
+    "muscleGroup": "bicep"
+  },
+  {
+    "exerciseName": "Hammer Curl",
+    "equipment": "dumbell",
+    "muscleGroup": "bicep"
+  },
+  {
+    "exerciseName": "Skull Crusher",
+    "equipment": "barbell",
+    "muscleGroup": "tricep"
+  },
+  {
+    "exerciseName": "Dips",
+    "equipment": "none",
+    "muscleGroup": "tricep"
+  },
+  {
+    "exerciseName": "Leg Extension",
+    "equipment": "machine",
+    "muscleGroup": "quadriceps"
+  },
+  {
+    "exerciseName": "Bulgarian Split Squat",
+    "equipment": "dumbell",
+    "muscleGroup": "quadriceps"
+  },
+  {
+    "exerciseName": "Romanian Deadlift",
+    "equipment": "barbell",
+    "muscleGroup": "hamstrings"
+  },
+  {
+    "exerciseName": "Good Mornings",
+    "equipment": "barbell",
+    "muscleGroup": "hamstrings"
+  },
+  {
+    "exerciseName": "Standing Calf Raise",
+    "equipment": "barbell",
+    "muscleGroup": "calves"
+  },
+  {
+    "exerciseName": "Seated Calf Raise",
+    "equipment": "machine",
+    "muscleGroup": "calves"
+  },
+  {
+    "exerciseName": "Lateral Raise",
+    "equipment": "dumbell",
+    "muscleGroup": "shoulders"
+  },
+  {
+    "exerciseName": "Front Raise",
+    "equipment": "dumbell",
+    "muscleGroup": "shoulders"
+  },
+  {
+    "exerciseName": "Reverse Fly",
+    "equipment": "dumbell",
+    "muscleGroup": "shoulders"
+  },
+  {
+    "exerciseName": "Hanging Leg Raise",
+    "equipment": "none",
+    "muscleGroup": "abs"
+  },
+  {
+    "exerciseName": "Sit-Up",
+    "equipment": "none",
+    "muscleGroup": "abs"
+  },
+  {
+    "exerciseName": "Ab Wheel Rollout",
+    "equipment": "none",
+    "muscleGroup": "abs"
+  },
+  {
+    "exerciseName": "Kettlebell Swing",
+    "equipment": "none",
+    "muscleGroup": "glutes"
+  },
+  {
+    "exerciseName": "Hip Thrust",
+    "equipment": "barbell",
+    "muscleGroup": "glutes"
+  },
+  {
+    "exerciseName": "Farmer's Walk",
+    "equipment": "dumbell",
+    "muscleGroup": "forearms"
+  },
+  {
+    "exerciseName": "Barbell Wrist Curl",
+    "equipment": "barbell",
+    "muscleGroup": "forearms"
+  },
+  {
+    "exerciseName": "Face Pull",
+    "equipment": "machine",
+    "muscleGroup": "traps"
+  },
+  {
+    "exerciseName": "Rack Pull",
+    "equipment": "barbell",
+    "muscleGroup": "traps"
+  },
+  {
+    "exerciseName": "Side Plank",
+    "equipment": "none",
+    "muscleGroup": "obliques"
+  },
+  {
+    "exerciseName": "Cable Woodchopper",
+    "equipment": "machine",
+    "muscleGroup": "obliques"
+  },
+  {
+    "exerciseName": "Stretch Band Chest Press",
+    "equipment": "stretchBand",
+    "muscleGroup": "chest"
+  },
+  {
+    "exerciseName": "Stretch Band Row",
+    "equipment": "stretchBand",
+    "muscleGroup": "back"
+  },
+  {
+    "exerciseName": "Stretch Band Lateral Raise",
+    "equipment": "stretchBand",
+    "muscleGroup": "shoulders"
+  },
+  {
+    "exerciseName": "Stretch Band Squat",
+    "equipment": "stretchBand",
+    "muscleGroup": "quadriceps"
+  },
+  {
+    "exerciseName": "Stretch Band Deadlift",
+    "equipment": "stretchBand",
+    "muscleGroup": "hamstrings"
+  },
+  {
+    "exerciseName": "Stretch Band Calf Raise",
+    "equipment": "stretchBand",
+    "muscleGroup": "calves"
+  }
+]
