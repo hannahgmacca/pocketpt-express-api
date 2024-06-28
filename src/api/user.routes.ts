@@ -11,7 +11,7 @@ router.get<{}>('/me', authMiddleware, async (req, res) => {
   try {
     const userDomain: UserDomain = new UserDomain(req.user);
     
-    const user = await User.findById(userDomain._id).populate('activeWorkout');
+    const user = await User.findById(userDomain._id);
 
     if (user) {
       return res.status(200).send(user);
