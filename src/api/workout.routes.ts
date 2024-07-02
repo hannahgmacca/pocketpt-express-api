@@ -130,7 +130,7 @@ router.patch('/:id', authMiddleware, async (req, res) => {
 });
 
 // DELETE a workout by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -141,7 +141,7 @@ router.delete('/:id', async (req, res) => {
       return res.status(404).json({ message: 'Workout not found' });
     }
 
-    if (deletedWorkout.id != user._id) {
+    if (deletedWorkout.userId != user._id) {
       return res.status(403).json({ message: 'Unauthorised' });
     }
 

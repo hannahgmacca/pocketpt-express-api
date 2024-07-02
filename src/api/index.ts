@@ -15,9 +15,9 @@ router.get<{}, MessageResponse>('/', (req, res) => {
   });
 });
 
+router.use('/auth', auth);
 router.use('/user', user);
 router.use('/roles', role);
-router.use('/auth', auth);
 router.use('/exercise', exercise);
 router.use('/workout', workout);
 
