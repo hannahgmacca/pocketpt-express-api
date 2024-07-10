@@ -4,13 +4,15 @@ export interface IExercise {
   _id: Types.ObjectId;
   exerciseName: string;
   equipment: equipmentType;
-  muscleGroup: muscleGroup
+  muscleGroup: muscleGroup;
+  isEachSide: boolean;
 }
 
 export interface IUserExercises {
   _id: Types.ObjectId;
   userId: Types.ObjectId;
   exercises: IExercise[];
+  isEachSide: boolean;
 }
 
 export enum muscleGroup {
@@ -52,6 +54,10 @@ export const exerciseSchema: Schema = new Schema<IExercise, ExerciseModel>({
     type: String,
     enum: muscleGroup,
     default: muscleGroup.none,
+  },
+  isEachSide: {
+    type: Boolean,
+    default: false,
   },
 });
 

@@ -45,7 +45,6 @@ router.get('/:id', authMiddleware, async (req, res) => {
 // POST a new workout
 router.post('/', authMiddleware, async (req, res) => {
   try {
-    const { exercises } = req.body;
     const returnExercises = [];
 
     for (var exercise of req.body) {
@@ -54,7 +53,8 @@ router.post('/', authMiddleware, async (req, res) => {
         _id: new Types.ObjectId,
         exerciseName: exercise.exerciseName,
         equipment: exercise.equipment,
-        muscleGroup: exercise.muscleGroup
+        muscleGroup: exercise.muscleGroup,
+        isEachSide: exercise.isEachSide || false
       } );
 
       returnExercises.push(newExercise);
