@@ -7,7 +7,7 @@ export interface IWorkout {
   workoutName: string;
   workoutType: WorkoutType;
   completedRoundList: IRound[];
-  activeRound: IRound | undefined;
+  activeRound: IRound | null;
   caloriesBurnt: number;
   isActive?: boolean;
   startedDateTime?: Date;

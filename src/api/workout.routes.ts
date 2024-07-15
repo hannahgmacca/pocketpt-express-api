@@ -74,7 +74,7 @@ router.post('/', authMiddleware, async (req, res) => {
       workoutName,
       workoutType: workoutType as WorkoutType,
       completedRoundList: [],
-      activeRound: undefined,
+      activeRound: null,
       caloriesBurnt: 0,
       startedDateTime: new Date(),
       completedDateTime: undefined,
@@ -98,31 +98,38 @@ router.patch('/:id', authMiddleware, async (req, res) => {
 
   try {
     const user: UserDomain = new UserDomain(req.user);
-    const updatedWorkout = await Workout.findById(id)
+    const workoutToUpdate = await Workout.findById(id)
 
-
-    if (!updatedWorkout) {
+    if (!workoutToUpdate) {
       return res.status(404).json({ message: 'Workout not found' });
     }
 
-    if (updatedWorkout.userId != user._id) {
+    if (workoutToUpdate.userId != user._id) {
       return res.status(403).json({ message: 'Unauthorised' });
     }
 
-    await Workout.findByIdAndUpdate(id, req.body)
+    if (!req.body.activeRound) req.body.activeRound = null;
 
-    if (updatedWorkout.completedDateTime && updatedWorkout.isActive) {
+    const updatedWorkout = await Workout.findByIdAndUpdate(id, req.body)
+
+    if (updatedWorkout?.completedDateTime) {
+        updatedWorkout.activeRound = null;
+        updatedWorkout.save();
+    }
+    
+    if (req.body.completedDateTime && req.body.isActive) {
       const userToUpdate = await User.findById(user._id);
 
       if (!userToUpdate) {
         return res.status(403).json({ message: 'Unauthorised' });
       }
 
+      workoutToUpdate.activeRound = null;
       userToUpdate.activeWorkout = null;
       userToUpdate.save();
     }
 
-    res.json(updatedWorkout);
+    res.json(req.body);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
