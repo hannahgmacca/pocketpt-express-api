@@ -4,6 +4,7 @@ import { UserDomain } from '../models/domain/user-domain.model';
 import { authMiddleware } from '../middlewares';
 import { Types } from 'mongoose';
 import User from '../models/user.model';
+import { processCompletedWorkout } from './services/exercise-history.service';
 
 const router = express.Router();
 
@@ -98,7 +99,7 @@ router.patch('/:id', authMiddleware, async (req, res) => {
 
   try {
     const user: UserDomain = new UserDomain(req.user);
-    const workoutToUpdate = await Workout.findById(id)
+    const workoutToUpdate = await Workout.findById(id);
 
     if (!workoutToUpdate) {
       return res.status(404).json({ message: 'Workout not found' });
@@ -110,23 +111,21 @@ router.patch('/:id', authMiddleware, async (req, res) => {
 
     if (!req.body.activeRound) req.body.activeRound = null;
 
-    const updatedWorkout = await Workout.findByIdAndUpdate(id, req.body)
-
-    if (updatedWorkout?.completedDateTime) {
-        updatedWorkout.activeRound = null;
-        updatedWorkout.save();
-    }
+    const updatedWorkout = await Workout.findByIdAndUpdate(id, req.body,{ new: true});
+    console.log()
     
-    if (req.body.completedDateTime && req.body.isActive) {
+    if (updatedWorkout?.completedDateTime) {
+      // process updated workout performance here
+      await processCompletedWorkout(updatedWorkout, user._id);
+
       const userToUpdate = await User.findById(user._id);
 
       if (!userToUpdate) {
         return res.status(403).json({ message: 'Unauthorised' });
       }
 
-      workoutToUpdate.activeRound = null;
       userToUpdate.activeWorkout = null;
-      userToUpdate.save();
+      await userToUpdate.save();
     }
 
     res.json(req.body);

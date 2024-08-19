@@ -1,10 +1,15 @@
 import mongoose, { Model, Schema, Types } from 'mongoose';
 import { ISet, setSchema } from './set.model';
+import { IExerciseHistory } from './exercise-history.model';
 
 export interface IRound {
   _id: Types.ObjectId;
   setList: ISet[][];
   roundSetType: RoundSetType;
+}
+
+export interface IActiveRound extends IRound {
+  exerciseHistory: IExerciseHistory[]
 }
 
 export enum RoundSetType {
@@ -27,5 +32,10 @@ export const roundSchema: Schema = new Schema<IRound, RoundModel>({
 });
 
 const Round = mongoose.model<IRound, RoundModel>('Round', roundSchema);
+
+export const personalBestRoundSchema: Schema = new Schema({
+  weightKg: roundSchema,
+  volumeKg: roundSchema,
+}, { _id: false }); // _id: false to avoid creating an _id for subdocumen
 
 export default Round;

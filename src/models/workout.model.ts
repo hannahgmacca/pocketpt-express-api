@@ -1,4 +1,4 @@
-import { IRound, roundSchema } from './round.model';
+import { IActiveRound, IRound, roundSchema } from './round.model';
 import mongoose, { Model, Schema, Types } from 'mongoose';
 
 export interface IWorkout {
@@ -14,6 +14,18 @@ export interface IWorkout {
   completedDateTime?: Date;
 }
 
+export interface IActiveWorkout {
+  _id: Types.ObjectId;
+  userId: Types.ObjectId;
+  workoutName: string;
+  workoutType: WorkoutType;
+  completedRoundList: IRound[];
+  activeRound: IActiveRound | null;
+  caloriesBurnt: number;
+  isActive?: boolean;
+  startedDateTime?: Date;
+  completedDateTime?: Date;
+}
 
 export interface WorkoutShort {
   workoutId: number;

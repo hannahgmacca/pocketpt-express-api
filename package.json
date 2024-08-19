@@ -10,7 +10,9 @@
     "lint": "eslint --fix src test",
     "test": "jest",
     "typecheck": "tsc --noEmit",
-    "vercel-build": "echo hello"
+    "vercel-build": "echo hello",
+    "dev:debug": "ts-node --transpile-only --respawn --inspect=4321 --project tsconfig.json src/index.ts"
+
   },
   "keywords": [],
   "author": "CJ R. <cj@null.computer> (https://w3cj.now.sh)",

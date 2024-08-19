@@ -50,7 +50,6 @@ export function authMiddleware(
   }
 
   try {
-    console.log(token)
     const decodedToken = jwt.verify(token, secretKey) as IUser;
     req.user = decodedToken;
     next();

@@ -45,12 +45,14 @@ router.get('/:id', authMiddleware, async (req, res) => {
 // POST a new workout
 router.post('/', authMiddleware, async (req, res) => {
   try {
+    const user: UserDomain = new UserDomain(req.user);
     const returnExercises = [];
 
     for (var exercise of req.body) {
   
       const newExercise = await Exercise.create({
         _id: new Types.ObjectId,
+        userId: user._id,
         exerciseName: exercise.exerciseName,
         equipment: exercise.equipment,
         muscleGroup: exercise.muscleGroup,
@@ -67,37 +69,22 @@ router.post('/', authMiddleware, async (req, res) => {
   }
 });
 
-// PATCH/update an existing workout by ID
+// PATCH/update an existing exercise by ID
 router.patch('/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;
 
   try {
     const user: UserDomain = new UserDomain(req.user);
-    const updatedWorkout = await Workout.findById(id)
+    const updatedExercise = await Exercise.findById(id)
 
 
-    if (!updatedWorkout) {
-      return res.status(404).json({ message: 'Workout not found' });
+    if (!updatedExercise) {
+      return res.status(404).json({ message: 'Exercise not found' });
     }
 
-    if (updatedWorkout.userId != user._id) {
-      return res.status(403).json({ message: 'Unauthorised' });
-    }
+    const exercise = await Exercise.findByIdAndUpdate(id, req.body)
 
-    await Workout.findByIdAndUpdate(id, req.body)
-
-    if (updatedWorkout.completedDateTime && updatedWorkout.isActive) {
-      const userToUpdate = await User.findById(user._id);
-
-      if (!userToUpdate) {
-        return res.status(403).json({ message: 'Unauthorised' });
-      }
-
-      userToUpdate.activeWorkout = null;
-      userToUpdate.save();
-    }
-
-    res.json(updatedWorkout);
+    res.json(exercise);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
@@ -110,19 +97,19 @@ router.delete('/:id', async (req, res) => {
 
   try {
     const user: UserDomain = new UserDomain(req.user);
-    const deletedWorkout = await Workout.findById(id);
+    const deletedExercise = await Exercise.findById(id);
 
-    if (!deletedWorkout) {
+    if (!deletedExercise) {
       return res.status(404).json({ message: 'Workout not found' });
     }
 
-    if (deletedWorkout.id != user._id) {
+    if (deletedExercise.userId != user._id) {
       return res.status(403).json({ message: 'Unauthorised' });
     }
 
-    await Workout.findByIdAndDelete(id)
+    await Exercise.findByIdAndDelete(id)
 
-    res.json({ message: 'Workout deleted successfully' });
+    res.json({ message: 'Exercise deleted successfully' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });

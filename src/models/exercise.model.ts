@@ -2,6 +2,7 @@ import mongoose, { Model, Schema, Types } from 'mongoose';
 
 export interface IExercise {
   _id: Types.ObjectId;
+  userId: Types.ObjectId;
   exerciseName: string;
   equipment: equipmentType;
   muscleGroup: muscleGroup;
@@ -45,6 +46,10 @@ export type ExerciseModel = Model<IExercise>;
 
 export const exerciseSchema: Schema = new Schema<IExercise, ExerciseModel>({
   exerciseName: String,
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }, 
   equipment: {
     type: String,
     enum: equipmentType,
