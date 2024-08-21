@@ -32,14 +32,11 @@ router.get(`/`, authMiddleware, async (req, res) => {
     const user: UserDomain = new UserDomain(req.user);
     
     const workouts = await Workout.find({userId: user._id });
-
-    await Promise.all(workouts.map( async workout => {
+    
+    for (const workout of workouts) {
+      // This processes each workout one by one, synchronously.
       await processCompletedWorkout(workout, user._id);
-    }))
-
-    // for (let workout of workouts) {
-    //   await processCompletedWorkout(workout, user._id);
-    // }
+    }
 
     return res.json('Success!')
   } catch (error) {

@@ -112,7 +112,6 @@ router.patch('/:id', authMiddleware, async (req, res) => {
     if (!req.body.activeRound) req.body.activeRound = null;
 
     const updatedWorkout = await Workout.findByIdAndUpdate(id, req.body,{ new: true});
-    console.log()
     
     if (updatedWorkout?.completedDateTime) {
       // process updated workout performance here

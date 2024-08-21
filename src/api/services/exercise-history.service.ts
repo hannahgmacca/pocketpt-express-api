@@ -4,8 +4,8 @@ import { IRound } from '../../models/round.model';
 import { IExercise } from '../../models/exercise.model';
 import Workout, { IWorkout } from '../../models/workout.model';
 
-export const processCompletedWorkout = async (workout: IWorkout, userId: Types.ObjectId) => {
-  if (!workout.completedDateTime) return null;
+export const processCompletedWorkout = async (workout: IWorkout, userId: Types.ObjectId): Promise<void> => {
+  if (!workout.completedDateTime) return;
   // round best efforts
   const bestEfforts: Record<
     string,
@@ -19,6 +19,7 @@ export const processCompletedWorkout = async (workout: IWorkout, userId: Types.O
       volumeIndex: number;
     }
   > = {};
+
   await Promise.all(
     workout.completedRoundList.map(async (round) => {
       round.setList.flat().map(async (set, i) => {
@@ -131,7 +132,6 @@ export const processCompletedWorkout = async (workout: IWorkout, userId: Types.O
         };
 
         exerciseHistory = await ExerciseHistory.create(newExerciseHistoryRequest);
-        await exerciseHistory.save();
 
         roundHistoricalItem.wasPersonalBest.volumeKg = true;
         roundHistoricalItem.bestEffort.volumeKg = exerciseBestEffort.bestEffortVolumeKg;
